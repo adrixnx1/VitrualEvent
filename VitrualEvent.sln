@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualEvent_WEB", "VirtualEvent_WEB\VirtualEvent_WEB.csproj", "{964FA61F-B659-4BE5-89D6-D29D0304D9A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualEvent_WEB", "VirtualEvent_WEB\VirtualEvent_WEB.csproj", "{964FA61F-B659-4BE5-89D6-D29D0304D9A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
