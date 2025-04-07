@@ -16,9 +16,14 @@ namespace VirtualEvent_WEB.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            if (LoginUser.Email == "test@example.com" && LoginUser.Password == "password123")
+            // Simulate user lookup
+            var user = RegisterModel.Users.FirstOrDefault(u =>
+                u.Email == LoginUser.Email && u.Password == LoginUser.Password);
+
+            if (user != null)
             {
-                return RedirectToPage("/Index"); // go to homepage after login
+                HttpContext.Session.SetString("UserEmail", user.Email);
+                return RedirectToPage("/Index");
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");

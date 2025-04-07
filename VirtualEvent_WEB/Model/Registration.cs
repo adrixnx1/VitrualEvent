@@ -6,7 +6,7 @@ namespace VirtualEvent_WEB.Model
     {
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First Name is required")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Last Name is required")]
