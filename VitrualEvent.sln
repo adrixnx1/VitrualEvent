@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualEvent_WEB", "VirtualEvent_WEB\VirtualEvent_WEB.csproj", "{964FA61F-B659-4BE5-89D6-D29D0304D9A3}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "VirtualEvent_DB", "VirtualEvent_DB\VirtualEvent_DB.sqlproj", "{1CC89500-5049-45B2-AFF4-50AEAF4F6514}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "VirtualEvent_DB1", "VirtualEvent_DB\VirtualEvent_DB1.sqlproj", "{1CC89500-5049-45B2-AFF4-50AEAF4F6514}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
