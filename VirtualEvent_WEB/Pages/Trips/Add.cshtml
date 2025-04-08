@@ -1,0 +1,27 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Trips.AddModel
+@{
+    ViewData["Title"] = "Add Trip";
+}
+
+<h2>Add a Trip</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Trip.TripName" class="form-label">Trip Name</label>
+        <input asp-for="Trip.TripName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Trip.Country" class="form-label">Country</label>
+        <input asp-for="Trip.Country" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Trip.Location" class="form-label">Location</label>
+        <input asp-for="Trip.Location" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Trip.Date" class="form-label">Date</label>
+        <input asp-for="Trip.Date" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Book Trip</button>
+</form>
