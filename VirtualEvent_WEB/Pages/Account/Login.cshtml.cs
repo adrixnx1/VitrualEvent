@@ -1,28 +1,43 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 namespace VirtualEvent_WEB.Pages.Account
 {
     public class SignINModel : PageModel
     {
         [BindProperty]
-    public LoginInputModel LoginUser { get; set; }
-        public void OnGet()
-        {
-        }
-        public IActionResult OnPost()
+        public LoginInputModel LoginUser { get; set; }
+
+        public void OnGet() { }
+
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
                 return Page();
 
-            // Simulate user lookup
+            // Simulate user lookup from register
             var user = RegisterModel.Users.FirstOrDefault(u =>
                 u.Email == LoginUser.Email && u.Password == LoginUser.Password);
 
             if (user != null)
             {
-                HttpContext.Session.SetString("UserEmail", user.Email);
+                // Build claims
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
+                    new Claim(ClaimTypes.Email, user.Email)
+                };
+
+                // Create identity and sign in
+                var identity = new ClaimsIdentity(claims, "Cookies");
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync("Cookies", principal);
+
                 return RedirectToPage("/Index");
             }
 
@@ -41,3 +56,4 @@ namespace VirtualEvent_WEB.Pages.Account
         }
     }
 }
+

@@ -10,7 +10,6 @@ builder.Services.AddAuthentication("Cookies")
         options.LoginPath = "/Account/Login";
     });
 
-
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -23,8 +22,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseSession();
 
+
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapRazorPages();
