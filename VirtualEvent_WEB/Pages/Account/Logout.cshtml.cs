@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -5,12 +6,12 @@ namespace VirtualEvent_WEB.Pages.Account
 {
     public class LogoutModel : PageModel
     {
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            HttpContext.Session.Clear();
-            return RedirectToPage("/Index");
+            await HttpContext.SignOutAsync("Cookies");
+            return RedirectToPage("/Account/Login");
         }
     }
-    } 
+}
 
 
