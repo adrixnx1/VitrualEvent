@@ -5,34 +5,79 @@
     ViewData["Title"] = "Home page";
 }
 
-
-<div class="text-center mt-5">
-    <h1 class="display-4 fw-bold mb-3">Seamless Virtual Events, Efficiently Managed</h1>
-    <h1 class="display-4 fw-bold mb-3">PLAN YOUR TRIP NOW</h1>
-    <p class="lead mb-4">
-        Learn about <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="text-decoration-none text-primary fw-semibold">Cloud Meet</a>.
+<div class="text-center mt-5 px-3">
+    <h1 class="display-4 fw-bold mb-3 travel-title">Seamless Virtual Events, Efficiently Managed</h1>
+    <h1 class="display-5 fw-semibold mb-4 travel-subtitle">Plan your trip now</h1>
+    <p class="lead mb-4 text-muted">
+        Learn more about <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="travel-link">Cloud Meet</a> — your platform for organizing unforgettable experiences.
     </p>
 
-    <div class="d-flex justify-content-center gap-3">
-        <a asp-page="/Account/Register"
-           class="btn btn-primary btn-lg px-5 py-2 rounded-pill shadow-sm transition">
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a asp-page="/Account/Register" class="btn travel-btn px-5 py-2 rounded-pill">
             Register
         </a>
-        <a asp-page="/Account/Login" class="btn btn-outline-primary btn-lg px-5 py-2 rounded-pill shadow-sm transition">
+        <a asp-page="/Account/Login" class="btn travel-btn-outline px-5 py-2 rounded-pill">
             Sign In
         </a>
-</div><
     </div>
 </div>
 
 <style>
-    .transition {
-        transition: all 0.3s ease-in-out;
+    body {
+        background: linear-gradient(to bottom right, #f7f9fc, #e3f2fd);
+        font-family: 'Poppins', sans-serif;
+        color: #1a1a1a;
     }
 
-    .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 1rem rgba(0, 123, 255, 0.15);
-
+    .travel-title {
+        color: #0d47a1;
     }
+
+    .travel-subtitle {
+        color: #1976d2;
+    }
+
+    .travel-link {
+        color: #1976d2;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+        .travel-link:hover {
+            border-bottom: 1px solid #1976d2;
+        }
+
+    .travel-btn {
+        background-color: #1976d2;
+        color: #fff;
+        font-weight: 500;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+    }
+
+        .travel-btn:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(21, 101, 192, 0.3);
+        }
+
+    .travel-btn-outline {
+        border: 2px solid #1976d2;
+        color: #1976d2;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background-color: transparent;
+    }
+
+        .travel-btn-outline:hover {
+            background-color: #e3f2fd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+        }
 </style>
+
+<!-- Optional modern font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
