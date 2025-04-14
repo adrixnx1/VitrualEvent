@@ -1,83 +1,110 @@
 ﻿@page
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model IndexModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model VirtualEvent_WEB.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Cloud Meet";
+    var isLoggedIn = !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserEmail"));
 }
 
-<div class="text-center mt-5 px-3">
-    <h1 class="display-4 fw-bold mb-3 travel-title">Seamless Virtual Events, Efficiently Managed</h1>
-    <h1 class="display-5 fw-semibold mb-4 travel-subtitle">Plan your trip now</h1>
-    <p class="lead mb-4 text-muted">
-        Learn more about <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="travel-link">Cloud Meet</a> — your platform for organizing unforgettable experiences.
-    </p>
-
-    <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a asp-page="/Account/Register" class="btn travel-btn px-5 py-2 rounded-pill">
-            Register
-        </a>
-        <a asp-page="/Account/Login" class="btn travel-btn-outline px-5 py-2 rounded-pill">
-            Sign In
-        </a>
-    </div>
-</div>
-
 <style>
-    body {
-        background: linear-gradient(to bottom right, #f7f9fc, #e3f2fd);
-        font-family: 'Poppins', sans-serif;
-        color: #1a1a1a;
+    .cloud-home {
+        background: url('/images/bg-cloud.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1rem;
+        position: relative;
     }
 
-    .travel-title {
-        color: #0d47a1;
+    .cloud-title {
+        font-size: 3rem;
+        font-weight: 700;
     }
 
-    .travel-subtitle {
-        color: #1976d2;
+    .cloud-sub {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
-    .travel-link {
-        color: #1976d2;
-        font-weight: 500;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: all 0.3s ease;
+    .btn-cloud {
+        margin: 0.25rem;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
     }
 
-        .travel-link:hover {
-            border-bottom: 1px solid #1976d2;
-        }
-
-    .travel-btn {
-        background-color: #1976d2;
-        color: #fff;
-        font-weight: 500;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+    .cloud-circle {
+        margin: 2rem auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
-        .travel-btn:hover {
-            background-color: #1565c0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(21, 101, 192, 0.3);
-        }
-
-    .travel-btn-outline {
-        border: 2px solid #1976d2;
-        color: #1976d2;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        background-color: transparent;
+    .cloud-darken {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        inset: 0;
+        z-index: 0;
     }
 
-        .travel-btn-outline:hover {
-            background-color: #e3f2fd;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
-        }
+    .cloud-content {
+        z-index: 1;
+        position: relative;
+    }
 </style>
 
-<!-- Optional modern font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<div class="cloud-home">
+    <div class="cloud-darken"></div>
+    <div class="cloud-content">
+        <div class="cloud-title">Seamless Virtual Events,<br />Efficiently Managed</div>
+
+        <div class="cloud-circle">
+            CLOUD MEET
+        </div>
+
+        @if (!isLoggedIn)
+        {
+            <div class="cloud-sub">Welcome to Cloud Meet — your event planning app for managing virtual trips and meetups.</div>
+            <a class="btn btn-outline-light btn-cloud" asp-page="/Account/Login">Sign In</a>
+            <a class="btn btn-light btn-cloud" asp-page="/Account/Register">Register</a>
+        }
+        else
+        {
+            <div class="cloud-sub">Welcome back! Here's a quick look at your upcoming trips:</div>
+
+            @if (Model.Events?.Any() == true)
+            {
+                <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                    @foreach (var trip in Model.Events)
+                    {
+                        <div class="col">
+                            <div class="card h-100 text-dark">
+                                <img src="@trip.ImageUrl" class="card-img-top" alt="Event Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">@trip.Title</h5>
+                                    <p class="card-text">@trip.Description</p>
+                                    <a asp-page="/Events/Details" asp-route-id="@trip.Id" class="btn btn-outline-primary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-white fw-bold">You don't have any planned trips yet. <a class="text-light text-decoration-underline" asp-page="/Events/Create">Plan one now!</a></p>
+            }
+        }
+    </div>
+</div>
