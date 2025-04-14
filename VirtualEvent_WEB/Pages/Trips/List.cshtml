@@ -1,0 +1,36 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Trips.ListModel
+@{
+    ViewData["Title"] = "Your Booked Trips";
+}
+
+<h2>Your Booked Trips</h2>
+
+@if (Model.Trips.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Trip Name</th>
+                <th>Country</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trip in Model.Trips)
+            {
+                <tr>
+                    <td>@trip.TripName</td>
+                    <td>@trip.Country</td>
+                    <td>@trip.Location</td>
+                    <td>@trip.Date.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No trips booked yet.</p>
+}
