@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VirtualEvent_WEB.Model;
 
 namespace VirtualEvent_WEB.Pages.Events
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         [BindProperty]

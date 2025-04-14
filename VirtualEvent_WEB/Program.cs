@@ -4,6 +4,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login";
+    });
+
 
 var app = builder.Build();
 
