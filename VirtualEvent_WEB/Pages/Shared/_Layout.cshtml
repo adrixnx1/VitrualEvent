@@ -1,4 +1,8 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor
+﻿@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +38,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="tripDropdown">
                                     <li><a class="dropdown-item" asp-page="/Events/Create">Add New Trip</a></li>
-                                    <li><a class="dropdown-item" asp-page="/Events/Index">View All Trips</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Events/ViewTrips">View All Trips</a></li>
                                 </ul>
                             </li>
                         }

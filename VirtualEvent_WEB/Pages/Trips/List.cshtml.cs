@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using VirtualEvent_WEB.Models;
+using VirtualEvent_WEB.Model;
 
 namespace VirtualEvent_WEB.Pages.Trips
 {

@@ -1,33 +1,23 @@
 ﻿@page "{id:int}"
 @model VirtualEvent_WEB.Pages.Events.EditModel
 @{
-    ViewData["Title"] = "Edit Event";
+    ViewData["Title"] = "Edit Trip";
 }
 
-<h2>Edit Event</h2>
+<h2>Edit Trip</h2>
 
 <form method="post">
-    <input type="hidden" asp-for="EditableEvent.Id" />
-
     <div class="mb-3">
         <label asp-for="EditableEvent.Title" class="form-label"></label>
         <input asp-for="EditableEvent.Title" class="form-control" />
     </div>
-
     <div class="mb-3">
         <label asp-for="EditableEvent.Description" class="form-label"></label>
         <textarea asp-for="EditableEvent.Description" class="form-control"></textarea>
     </div>
-
-    <div class="mb-3">
-        <label asp-for="EditableEvent.ImageUrl" class="form-label"></label>
-        <input asp-for="EditableEvent.ImageUrl" class="form-control" />
-    </div>
-
     <div class="mb-3">
         <label asp-for="EditableEvent.Date" class="form-label"></label>
         <input asp-for="EditableEvent.Date" type="date" class="form-control" />
     </div>
-
-    <button type="submit" class="btn btn-success">Update</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
 </form>

@@ -1,0 +1,32 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Events.ViewTripsModel
+@{
+    ViewData["Title"] = "View All Trips";
+}
+
+<h2>My Trips</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trip in Model.AllEvents)
+        {
+            <tr>
+                <td>@trip.Title</td>
+                <td>@trip.Description</td>
+                <td>@trip.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-page="/Events/Edit" asp-route-id="@trip.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="/Events/Delete" asp-route-id="@trip.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VirtualEvent_WEB.Models
+namespace VirtualEvent_WEB.Model
 {
     public static class TripStore
     {
