@@ -16,6 +16,8 @@ namespace VirtualEvent_WEB.Model
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Enter a valid email address.")]
         public string Email { get; set; }
+        public bool IsEmailConfirmed { get; set; } = false;
+
 
         [Required(ErrorMessage = "Password is required.")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$", ErrorMessage = "Password must be at least 10 characters long and include at least one uppercase letter, one lowercase letter, and one number.")]
