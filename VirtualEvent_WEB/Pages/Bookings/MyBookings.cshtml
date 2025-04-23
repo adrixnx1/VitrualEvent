@@ -1,0 +1,41 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Bookings.MyBookingsModel
+@using VirtualEvent_WEB.Model
+
+@{
+    ViewData["Title"] = "My Bookings";
+}
+
+<h2>My Bookings</h2>
+
+@if (Model.UserBookings.Count == 0)
+{
+    <div class="alert alert-info">You have no bookings yet.</div>
+}
+else
+{
+    @foreach (var booking in Model.UserBookings)
+    {
+        <div class="card mb-3 p-3">
+            <p><strong>Date:</strong> @booking.Date</p>
+            <p>
+                <strong>Status:</strong>
+                @if (booking.IsCanceled)
+                {
+                    <span class="text-danger">Canceled</span>
+                }
+                else
+                {
+                    @(booking.IsConfirmed ? "Confirmed" : "Pending")
+                }
+            </p>
+
+            @if (!booking.IsCanceled)
+            {
+                <form method="post" asp-page-handler="Cancel" asp-route-id="@booking.Id">
+                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                </form>
+            }
+        </div>
+    }
+}
