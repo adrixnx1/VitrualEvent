@@ -18,7 +18,7 @@ namespace VirtualEvent_WEB.Model
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]
-        [StringLength(100, MinimumLength = 10, ErrorMessage = "Password must be at least 10 characters long.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$", ErrorMessage = "Password must be at least 10 characters long and include at least one uppercase letter, one lowercase letter, and one number.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
