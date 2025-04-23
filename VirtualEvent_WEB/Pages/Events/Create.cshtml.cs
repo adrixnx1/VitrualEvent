@@ -1,30 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VirtualEvent_WEB.Model;
-using System.Collections.Generic;
 
 namespace VirtualEvent_WEB.Pages.Events
 {
     public class CreateModel : PageModel
     {
         [BindProperty]
-        public Event NewEvent { get; set; }  // Bind the NewEvent object to the form inputs
+        public Event NewEvent { get; set; }
 
-        public static List<Event> AllEvents = new List<Event>(); // Shared event list
+        public IActionResult OnGet()
+        {
+            NewEvent = new Event(); // initialize form
+            return Page();
+        }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                return Page();  // Return to the same page if the model is invalid
+                return Page(); // redisplay form with errors
             }
 
-            // Assign a unique ID and add the event to the list
-            NewEvent.Id = AllEvents.Count + 1;
-            AllEvents.Add(NewEvent);
+            // Assign a unique ID
+            NewEvent.Id = EventData.Events.Count + 1;
 
-            // Redirect to ViewTrips after saving the event
+            // Save to global list
+            EventData.Events.Add(NewEvent);
+
+            // Redirect to ViewTrips page
             return RedirectToPage("/Events/ViewTrips");
         }
     }
 }
+

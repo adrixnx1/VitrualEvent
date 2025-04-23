@@ -1,10 +1,22 @@
-﻿@page "{id:int}"
+﻿@page
 @model VirtualEvent_WEB.Pages.Events.DetailsModel
+@using VirtualEvent_WEB.Model
+
 @{
-    ViewData["Title"] = Model.Event.Title;
+    ViewData["Title"] = "Event Details";
 }
 
-<h2>@Model.Event.Title</h2>
-<img src="@Model.Event.ImageUrl" class="img-fluid mb-3" alt="Event Image" />
-<p><strong>Date:</strong> @Model.Event.Date.ToShortDateString()</p>
-<p>@Model.Event.Description</p>
+<h2>Event Details</h2>
+
+<div class="card p-4">
+    <h3>@Model.TripDetails.Title</h3>
+    <p><strong>Description:</strong> @Model.TripDetails.Description</p>
+    <p><strong>Date:</strong> @Model.TripDetails.Date.ToShortDateString()</p>
+
+    @if (!string.IsNullOrEmpty(Model.TripDetails.ImageUrl))
+    {
+        <img src="@Model.TripDetails.ImageUrl" alt="Event Image" style="max-width: 100%; height: auto;" />
+    }
+
+    <a asp-page="/Events/ViewTrips" class="btn btn-secondary mt-3">Back to Events</a>
+</div>

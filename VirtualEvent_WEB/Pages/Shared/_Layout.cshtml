@@ -42,6 +42,15 @@
                                 </ul>
                             </li>
                         }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-page="/Events/Create">Add Event</a>
+                            </li>
+                        }
+
+<li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Bookings/MyBookings">My Bookings</a>
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Account/Services">Services</a>
