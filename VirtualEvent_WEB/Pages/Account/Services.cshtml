@@ -1,0 +1,47 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Account.ServicesModel
+@{
+    ViewData["Title"] = "Services";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Our Services</h1>
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <a asp-page="/Events/Create" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 hover-shadow">
+                    <div class="card-body">
+                        <i class="bi bi-calendar2-plus display-4 text-primary"></i>
+                        <h5 class="card-title mt-3">Event Creation</h5>
+                        <p class="card-text">Easily create and customize events with just a few clicks.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a asp-page="/Bookings/MyBookings" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 hover-shadow">
+                    <div class="card-body">
+                        <i class="bi bi-bookmark-check display-4 text-success"></i>
+                        <h5 class="card-title mt-3">Booking Management</h5>
+                        <p class="card-text">Track your event bookings and updates in one place.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a asp-page="/Events/ViewTrips" class="text-decoration-none text-dark">
+                <div class="card shadow-sm h-100 hover-shadow">
+                    <div class="card-body">
+                        <i class="bi bi-globe-americas display-4 text-info"></i>
+                        <h5 class="card-title mt-3">Trip Planning</h5>
+                        <p class="card-text">Plan and manage travel-based events or meetups.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -54,7 +54,7 @@ namespace VirtualEvent_WEB.Pages.Account
 
             // Show success message and redirect to confirmation notice
             TempData["Message"] = "Registration successful! Please check your email to confirm your account.";
-            return RedirectToPage("/Account/RegisterConfirmation");
+            return RedirectToPage("/Account/Login");
         }
 
     }
