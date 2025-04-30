@@ -19,7 +19,7 @@ namespace VirtualEvent_WEB.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            // Simulate user lookup from register
+            // Simulate user lookup from register (replace with actual database query)
             var user = RegisterModel.Users.FirstOrDefault(u =>
                 u.Email == LoginUser.Email && u.Password == LoginUser.Password);
 
@@ -27,20 +27,26 @@ namespace VirtualEvent_WEB.Pages.Account
             {
                 // Build claims
                 var claims = new List<Claim>
-{
-                 new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
-                 new Claim(ClaimTypes.Email, user.Email),
-                 new Claim("IsAdmin", user.IsAdmin.ToString()) // ?? Add this line
-               };
-
+                {
+                    new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim("IsAdmin", user.IsAdmin.ToString())  // Admin flag
+                };
 
                 // Create identity and sign in
                 var identity = new ClaimsIdentity(claims, "Cookies");
                 var principal = new ClaimsPrincipal(identity);
 
-                await HttpContext.SignInAsync("Cookies", principal);
+                // Set authentication properties for persistent login
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true,  // Keep the user logged in after closing the browser
+                    ExpiresUtc = DateTime.UtcNow.AddDays(7)  // Set cookie to expire in 7 days
+                };
 
-                return RedirectToPage("/Index");
+                await HttpContext.SignInAsync("Cookies", principal, authProperties);
+
+                return RedirectToPage("/Index");  // Redirect to the home page
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -58,4 +64,3 @@ namespace VirtualEvent_WEB.Pages.Account
         }
     }
 }
-
