@@ -3,7 +3,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @model VirtualEvent_WEB.Pages.IndexModel
 @{
-    ViewData["Title"] = "Cloud Meet";
+    ViewData["Title"] = "Virtual Event";
     var isLoggedIn = !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserEmail"));
 }
 
@@ -70,12 +70,12 @@
         <div class="cloud-title">Seamless Virtual Events,<br />Efficiently Managed</div>
 
         <div class="cloud-circle">
-            CLOUD MEET
+            Virtual Event
         </div>
 
         @if (!isLoggedIn)
         {
-            <div class="cloud-sub">Welcome to Cloud Meet — your event planning app for managing virtual trips and meetups.</div>
+            <div class="cloud-sub">Welcome to Virtual Event — your event planning app for managing virtual trips and meetups.</div>
             <a class="btn btn-outline-light btn-cloud" asp-page="/Account/Login">Sign In</a>
             <a class="btn btn-light btn-cloud" asp-page="/Account/Register">Register</a>
         }

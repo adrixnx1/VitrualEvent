@@ -1,0 +1,39 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Admin.DashboardModel
+@using VirtualEvent_WEB.Model
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+<table class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Admin?</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.IsAdmin</td>
+                <td>
+                    @if (!user.IsAdmin)
+                    {
+                        <form method="post" asp-page-handler="Delete">
+                            <input type="hidden" name="emailToDelete" value="@user.Email" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

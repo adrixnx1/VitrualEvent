@@ -5,6 +5,7 @@ namespace VirtualEvent_WEB.Model
 {
     public class Registration
     {
+        [Key]
         [Required(ErrorMessage = "First name is required.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -17,7 +18,6 @@ namespace VirtualEvent_WEB.Model
         [EmailAddress(ErrorMessage = "Enter a valid email address.")]
         public string Email { get; set; }
         public bool IsEmailConfirmed { get; set; } = false;
-
 
         [Required(ErrorMessage = "Password is required.")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$", ErrorMessage = "Password must be at least 10 characters long and include at least one uppercase letter, one lowercase letter, and one number.")]
@@ -32,5 +32,8 @@ namespace VirtualEvent_WEB.Model
 
         [Display(Name = "Registration Date")]
         public DateTime RegistrationDate { get; set; } = DateTime.Now;
+
+        [Display(Name = "Is Admin")]
+        public bool IsAdmin { get; set; } = false;
     }
 }

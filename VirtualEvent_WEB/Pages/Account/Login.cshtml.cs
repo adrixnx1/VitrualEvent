@@ -27,10 +27,12 @@ namespace VirtualEvent_WEB.Pages.Account
             {
                 // Build claims
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
-                    new Claim(ClaimTypes.Email, user.Email)
-                };
+{
+                 new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
+                 new Claim(ClaimTypes.Email, user.Email),
+                 new Claim("IsAdmin", user.IsAdmin.ToString()) // ?? Add this line
+               };
+
 
                 // Create identity and sign in
                 var identity = new ClaimsIdentity(claims, "Cookies");
