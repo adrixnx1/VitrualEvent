@@ -1,8 +1,4 @@
-﻿@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-
-@inject IHttpContextAccessor HttpContextAccessor
+﻿@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +27,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                         @if (HttpContextAccessor.HttpContext.User.HasClaim("IsAdmin", "True"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-page="/Admin/Dashboard">
+                                <a class="nav-link text-dark" asp-page="/Admin/Admin">
                                     <i class="bi bi-shield-lock"></i> Admin Panel
                                 </a>
                             </li>
@@ -56,13 +53,13 @@
                                     <li><a class="dropdown-item" asp-page="/Events/ViewTrips"><i class="bi bi-list-ul"></i> View All Trips</a></li>
                                 </ul>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page="/Events/Create">
                                     <i class="bi bi-calendar-plus"></i> Add Event
                                 </a>
                             </li>
                         }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-page="/Account/Services">
                                 <i class="bi bi-briefcase"></i> Services

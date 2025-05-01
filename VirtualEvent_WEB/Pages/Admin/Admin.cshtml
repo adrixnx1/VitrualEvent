@@ -1,0 +1,37 @@
+﻿@page
+@model VirtualEvent_WEB.Pages.Admin.AdminModel
+@{
+    ViewData["Title"] = "Admin Panel - Manage Users";
+}
+
+<h2>Admin Panel</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Is Admin?</th>
+            <th>Registration Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.AllUsers)
+        {
+            <tr>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.Email</td>
+                <td>@(user.IsAdmin ? "Yes" : "No")</td>
+                <td>@user.RegistrationDate.ToShortDateString()</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" name="email" value="@user.Email" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

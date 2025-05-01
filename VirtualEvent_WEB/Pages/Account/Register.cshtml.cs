@@ -30,6 +30,13 @@ namespace VirtualEvent_WEB.Pages.Account
             // Add the user
             Users.Add(NewUser);
 
+            // Make Adriana an admin if her email matches
+            if (NewUser.Email == "abarcenas2020@gmail.com")
+            {
+                NewUser.IsAdmin = true;
+            }
+
+
             // Create claims for authentication
             var claims = new List<Claim>
             {
