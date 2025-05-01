@@ -30,7 +30,7 @@ namespace VirtualEvent_WEB.Pages.Events
                 existing.Title = EditableEvent.Title;
                 existing.Description = EditableEvent.Description;
                 existing.Date = EditableEvent.Date;
-                existing.ImageUrl = EditableEvent.ImageUrl;
+               
             }
 
             return RedirectToPage("/Events/ViewTrips");

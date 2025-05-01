@@ -11,12 +11,7 @@
 <div class="card p-4">
     <h3>@Model.TripDetails.Title</h3>
     <p><strong>Description:</strong> @Model.TripDetails.Description</p>
-    <p><strong>Date:</strong> @Model.TripDetails.Date.ToShortDateString()</p>
-
-    @if (!string.IsNullOrEmpty(Model.TripDetails.ImageUrl))
-    {
-        <img src="@Model.TripDetails.ImageUrl" alt="Event Image" style="max-width: 100%; height: auto;" />
-    }
+    <p><strong>Date:</strong> @Model.TripDetails.Date.ToShortDateString()</p> 
 
     <a asp-page="/Events/ViewTrips" class="btn btn-secondary mt-3">Back to Events</a>
 </div>
