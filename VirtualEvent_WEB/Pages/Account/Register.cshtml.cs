@@ -31,7 +31,7 @@ namespace VirtualEvent_WEB.Pages.Account
             Users.Add(NewUser);
 
             // Make Adriana an admin if her email matches
-            if (NewUser.Email == "abarcenas2020@gmail.com")
+            if (NewUser.Email == "alantello1230@gmail.com")
             {
                 NewUser.IsAdmin = true;
             }
