@@ -17,10 +17,13 @@ namespace VirtualEvent_WEB.Model
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Enter a valid email address.")]
         public string Email { get; set; }
+
+        [Display(Name = "Email Confirmed")]
         public bool IsEmailConfirmed { get; set; } = false;
 
         [Required(ErrorMessage = "Password is required.")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$", ErrorMessage = "Password must be at least 10 characters long and include at least one uppercase letter, one lowercase letter, and one number.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$",
+            ErrorMessage = "Password must be at least 10 characters long and include at least one uppercase letter, one lowercase letter, and one number.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -35,5 +38,8 @@ namespace VirtualEvent_WEB.Model
 
         [Display(Name = "Is Admin")]
         public bool IsAdmin { get; set; } = false;
+
+        [Display(Name = "Account Type")]
+        public string AccountType { get; set; } = "User"; // Optional, useful for future role-based logic
     }
 }

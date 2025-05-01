@@ -30,7 +30,7 @@ namespace VirtualEvent_WEB.Pages.Account
                 {
                     new Claim(ClaimTypes.Name, user.FirstName ?? user.Email),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim("IsAdmin", user.IsAdmin.ToString())  // Admin flag
+                    //new Claim("IsAdmin", user.IsAdmin.ToString())  // Admin flag
                 };
 
                 // Create identity and sign in
